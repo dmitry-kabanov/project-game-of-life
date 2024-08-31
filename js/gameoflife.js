@@ -180,6 +180,14 @@ class GameOfLifeModel {
                 this.cells[i][j].state = CELL_ALIVE;
             }
         }
+        else if (ic === "toad (period 2)") {
+            this.cells[2][2].state = CELL_ALIVE;
+            this.cells[2][3].state = CELL_ALIVE;
+            this.cells[2][4].state = CELL_ALIVE;
+            this.cells[3][1].state = CELL_ALIVE;
+            this.cells[3][2].state = CELL_ALIVE;
+            this.cells[3][3].state = CELL_ALIVE;
+        }
         else {
             throw new Error("Unknown value for initial condition");
         }
@@ -250,7 +258,7 @@ class GameOfLifeModel {
 class GameOfLifeController {
     constructor() {
         this.fps = 5;
-        this.allowed_ic_values = ["still tub", "blinker (period 2)"];
+        this.allowed_ic_values = ["still tub", "blinker (period 2)", "toad (period 2)"];
         this.ic = this.allowed_ic_values[0];
         this.hasStarted = false;
         this.model = new GameOfLifeModel(this.ic);
