@@ -51,6 +51,13 @@ class GameOfLifeView {
         });
 
         this.stepLabel = document.getElementById("stepLabel");
+
+        window.addEventListener("keypress", (event) => {
+            if (event.key == " ") {
+                this.controller.handleStartStop();
+            }
+        });
+
         this._setDefaultFpsValue();
         this._setDefaultInitialCondition();
         
@@ -83,7 +90,6 @@ class GameOfLifeView {
                 }
             }
         }
-        console.log("Reset view");
     }
     
     /**
@@ -245,6 +251,7 @@ class GameOfLifeController {
         this.fps = 5;
         this.allowed_ic_values = ["still tub", "blinker (period 2)"];
         this.ic = this.allowed_ic_values[0];
+        this.hasStarted = false;
         this.model = new GameOfLifeModel(this.ic);
         this.view = new GameOfLifeView(this, this.model);
         
@@ -252,6 +259,7 @@ class GameOfLifeController {
     }
     
     handleStart() {
+        this.hasStarted = true;
         this.view.redrawGameStarted();
         if (this.requestId) {
             return;
@@ -280,8 +288,18 @@ class GameOfLifeController {
         this.requestId = null;
         this.model.reset(this.ic);
         this.view.redrawGameStopped();
+        this.hasStarted = false;
     }
     
+    handleStartStop() {
+        if (this.hasStarted) {
+            this.handleStop();
+        }
+        else {
+            this.handleStart();
+        }
+    }
+
     handleFpsChange(newFps) {
         newFps = parseInt(newFps);
         this.fps = newFps;
