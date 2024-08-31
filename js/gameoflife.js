@@ -1,5 +1,5 @@
-NX = 5;
-NY = 5;
+NX = 7;
+NY = 7;
 
 var CELL_DEAD = 0;
 var CELL_ALIVE = 1;
@@ -174,8 +174,9 @@ class GameOfLifeModel {
             this.cells[3][2].state = CELL_ALIVE;
         }
         else if (ic === "blinker (period 2)") {
+            const icenter = Math.round(NY / 2) - 1;
             const j = Math.round(NX / 2) - 1;       
-            for (let i = 1; i < NY - 1; i++) {
+            for (let i = icenter - 1; i < icenter + 2; i++) {
                 this.cells[i][j].state = CELL_ALIVE;
             }
         }
