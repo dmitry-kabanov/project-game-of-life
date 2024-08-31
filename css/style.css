@@ -1,0 +1,24 @@
+body {
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+#buttons-row {
+    text-align: center;
+    padding-top: 10px;
+}
+
+#step-indicator {
+    text-align: center;
+}
+
+#board {
+    border: 1px solid black;
+    margin: 20px auto;
+}
+#board td {
+    min-width: 20px;
+    min-height: 20px;
+    
+    border: 1px solid #aaa;
+}

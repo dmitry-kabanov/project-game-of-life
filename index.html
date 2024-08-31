@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Game of Life</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <div id="game">
+      <form id="controls">
+        <fieldset id="fps-fieldset">
+          <legend>Steps per second</legend>
+          <label><input name="fps" type="radio" value="5" /> 5</label>
+          <label><input name="fps" type="radio" value="15" /> 15</label>
+          <label><input name="fps" type="radio" value="30" /> 30</label>
+          <label><input name="fps" type="radio" value="60" /> 60</label>
+        </fieldset>
+        <fieldset id="initial-conditions">
+            <legend>Initial conditions</legend>
+            <label><input name="ic" type="radio" value="still tub" /> still tub</label>
+            <label><input name="ic" type="radio" value="blinker (period 2)" /> blinker (period 2)</label>
+        </fieldset>
+        <div id="buttons-row">
+          <input id="startButton" type="button" value="Start" />
+          <input id="stopButton" type="button" value="Stop" />
+        </div>
+      </form>
+      <p id="step-indicator">Step: <span id="stepLabel">0</span></p>
+      <table id="board"></table>
+    </div>
+    <script src="js/gameoflife.js"></script>
+    <script type="text/javascript">
+      window.onload = initGame();
+    </script>
+  </body>
+</html>
